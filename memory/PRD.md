@@ -31,6 +31,15 @@ Faithful copy from owner's Appendix A; planned-status honesty for Find a Friend;
 - Original SVG logo mark + favicon; light analytics (page_view, downloads, preview clicks)
 - Verified: curl smoke on all endpoints incl. 422 negative case; yarn typecheck clean; browser pass desktop+mobile incl. form submission
 
+## Implemented (26 Sep 2026, iteration 2)
+- Real launch emails via Emergent-managed Resend (backend/lib/emailer.py): welcome email to every new signup; owner alert fires when OWNER_EMAIL is added to backend/.env (user hasn't supplied an address yet). Verified: 202 Accepted, email id 01a0dd44...
+- EN/हिं language toggle (header) — hero, nav, CTAs, section headings, ribbon switch to Hindi using the owner's approved Hindi lines (src/lib/i18n.tsx); body copy stays English by user choice
+- Google Translate floating widget (bottom-right, 10 Indian languages) — src/components/GoogleTranslate.tsx; disclosed in the information-use section
+- Social share card: /assets/og-share.jpg (1200x630, official logo + family photo) wired via OG/Twitter meta in index.html; regenerate with scripts/make_og_image.py
+- Official Quircle logo (user-supplied) replaces the placeholder mark: header/footer (QuircleLogo.tsx), favicon (/assets/icon-192.png), OG card
+- PDF flip-through preview modals: every PDF page pre-rendered to /downloads/preview/{slug}-{n}.jpg (scripts via pymupdf); modal with arrows, dots, page indicator, in-modal download
+- User-supplied feature illustrations placed across the site: document-vault, health-records, photo-memories, live-bidding (bento), family-tree (sharing), find-friend (people), marketplace (commerce), quick-help, chat, news-room (services grid, News Room added as 4th card)
+
 ## Backlog
 - P0: none blocking
 - P1: real email sending for notify list (Resend); permanent app-store links when owner supplies them; Hindi adaptation of copy (owner has approved Hindi lines)

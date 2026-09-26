@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { apiGet, apiPost } from "@/lib/api";
+import { useLang } from "@/lib/i18n";
 
 interface NotifyResponse {
   ok: boolean;
@@ -40,6 +41,7 @@ const ROLES: Record<string, string> = {
 
 export function NotifySection() {
   const queryClient = useQueryClient();
+  const { t } = useLang();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [city, setCity] = useState("");
@@ -89,9 +91,9 @@ export function NotifySection() {
             Get launch updates
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
-            Be the first to know
+            {t("notify_h2a")}
             <br />
-            <span className="font-editorial font-medium italic text-qp-deep">when Quircle opens up.</span>
+            <span className="font-editorial font-medium italic text-qp-deep">{t("notify_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-qp-muted sm:text-lg">
             Leave your details and we will write to you when new features land — including the

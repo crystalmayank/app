@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { useLang } from "@/lib/i18n";
 
 const STEPS = [
   {
@@ -22,27 +23,39 @@ const STEPS = [
 ];
 
 export function FamilySharingSteps() {
+  const { t } = useLang();
   return (
     <section id="sharing" className="scroll-mt-24 bg-qp-lav/70 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
-        <Reveal>
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-            A practical family benefit
-          </p>
-          <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
-            Be there.
-            <br />
-            <span className="font-editorial font-medium italic text-qp-deep">Even from elsewhere.</span>
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
-            A selected document for a sibling. A report ready for an appointment. A photograph that
-            brings everyone back to the same moment.
-          </p>
-          <p className="mt-4 max-w-2xl text-sm leading-relaxed text-qp-muted">
-            Quircle’s family, vault and health areas are designed around these everyday needs. A
-            family connection should never be treated as permission to see every private record.
-          </p>
-        </Reveal>
+        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
+          <Reveal>
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
+              A practical family benefit
+            </p>
+            <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
+              {t("sharing_h2a")}
+              <br />
+              <span className="font-editorial font-medium italic text-qp-deep">{t("sharing_h2b")}</span>
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
+              A selected document for a sibling. A report ready for an appointment. A photograph that
+              brings everyone back to the same moment.
+            </p>
+            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-qp-muted">
+              Quircle’s family, vault and health areas are designed around these everyday needs. A
+              family connection should never be treated as permission to see every private record.
+            </p>
+          </Reveal>
+          <Reveal delay={0.12}>
+            <img
+              src="/assets/family-tree.jpg"
+              alt="Illustration of a multi-generation Quircle family tree around a connected home"
+              loading="lazy"
+              data-testid="family-tree-art"
+              className="w-full rounded-3xl border border-qp-line object-cover shadow-[0_30px_70px_-30px_rgba(67,33,106,0.4)]"
+            />
+          </Reveal>
+        </div>
 
         <div className="relative mt-14 grid gap-10 md:grid-cols-3 md:gap-8">
           <div

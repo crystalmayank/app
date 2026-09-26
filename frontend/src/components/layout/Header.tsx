@@ -3,10 +3,46 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { QuircleLogo } from "@/components/QuircleLogo";
 import { NAV_LINKS, APP_PREVIEW_URL, scrollToHash } from "@/lib/content";
 import { track } from "@/lib/analytics";
+import { useLang } from "@/lib/i18n";
+
+function LangToggle() {
+  const { lang, setLang } = useLang();
+  return (
+    <div
+      role="group"
+      aria-label="Language"
+      className="flex items-center rounded-full border border-qp-line bg-white p-1"
+    >
+      <button
+        type="button"
+        data-testid="lang-en-button"
+        aria-pressed={lang === "en"}
+        onClick={() => setLang("en")}
+        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors duration-200 ${
+          lang === "en" ? "bg-qp-deep text-white" : "text-qp-muted hover:text-qp-deep"
+        }`}
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        data-testid="lang-hi-button"
+        aria-pressed={lang === "hi"}
+        onClick={() => setLang("hi")}
+        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-colors duration-200 ${
+          lang === "hi" ? "bg-qp-deep text-white" : "text-qp-muted hover:text-qp-deep"
+        }`}
+      >
+        हिं
+      </button>
+    </div>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const { t } = useLang();
 
   useEffect(() => {
     if (!open) return;
@@ -52,12 +88,13 @@ export function Header() {
               }}
               className="text-sm font-semibold text-qp-ink/80 transition-colors duration-200 hover:text-qp-orange"
             >
-              {l.label}
+              {t(l.key)}
             </a>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
+          <LangToggle />
           <a
             href={APP_PREVIEW_URL}
             target="_blank"
@@ -66,7 +103,7 @@ export function Header() {
             onClick={() => track("preview_click", "header")}
             className="hidden items-center gap-1.5 rounded-lg bg-qp-deep px-5 py-2.5 text-sm font-bold text-white transition-all duration-200 hover:bg-qp-purple active:scale-[0.98] sm:inline-flex"
           >
-            Open app preview
+            {t("nav_preview")}
             <ArrowUpRight size={16} strokeWidth={2.5} />
           </a>
           <button
@@ -99,7 +136,7 @@ export function Header() {
               }}
               className="block border-b border-qp-line/60 py-3.5 text-base font-semibold text-qp-ink"
             >
-              {l.label}
+              {t(l.key)}
             </a>
           ))}
           <a
@@ -110,7 +147,7 @@ export function Header() {
             onClick={() => track("preview_click", "mobile-menu")}
             className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-qp-deep px-5 py-3.5 text-sm font-bold text-white"
           >
-            Open app preview
+            {t("nav_preview")}
             <ArrowUpRight size={16} strokeWidth={2.5} />
           </a>
         </nav>

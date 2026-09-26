@@ -3,8 +3,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ArrowDownRight, Download, FolderLock, BellRing, Gavel } from "lucide-react";
 import { BROCHURE_URL, scrollToHash } from "@/lib/content";
 import { track } from "@/lib/analytics";
-
-const HEADLINE_LINES = ["Your family life,", "connected."];
+import { useLang } from "@/lib/i18n";
 
 function FloatingChip({
   icon,
@@ -50,6 +49,7 @@ function FloatingChip({
 
 export function HeroSection() {
   const reduce = useReducedMotion();
+  const { t } = useLang();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -57,6 +57,7 @@ export function HeroSection() {
   });
   const photoY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 70]);
   const chipY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -40]);
+  const lines = [t("hero_h1a"), t("hero_h1b")];
 
   return (
     <section ref={sectionRef} id="top" className="relative overflow-hidden pt-[76px]">
@@ -78,16 +79,16 @@ export function HeroSection() {
             className="inline-flex items-center gap-2.5 rounded-full border border-qp-line bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-qp-purple"
           >
             <span className="pulse-dot inline-block h-2 w-2 rounded-full bg-qp-orange" />
-            Documents. Memories. Your people.
+            {t("hero_eyebrow")}
           </motion.p>
 
           <h1
             data-testid="hero-headline"
-            aria-label="Your family life, connected."
+            aria-label={`${lines[0]} ${lines[1]}.`}
             className="mt-7 font-heading text-[44px] font-extrabold leading-[1.05] tracking-tight text-qp-ink sm:text-6xl lg:text-[68px]"
           >
-            {HEADLINE_LINES.map((line, i) => (
-              <span key={line} aria-hidden="true" className="block overflow-hidden pb-1">
+            {lines.map((line, i) => (
+              <span key={`${line}-${i}`} aria-hidden="true" className="block overflow-hidden pb-1">
                 <motion.span
                   className="block"
                   initial={{ y: reduce ? 0 : "112%" }}
@@ -96,7 +97,7 @@ export function HeroSection() {
                 >
                   {i === 1 ? (
                     <>
-                      <span className="font-editorial italic text-qp-deep">connected</span>
+                      <span className="font-editorial italic text-qp-deep">{line}</span>
                       <span className="text-qp-orange">.</span>
                     </>
                   ) : (
@@ -114,8 +115,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 max-w-lg text-lg leading-relaxed text-qp-muted"
           >
-            Keep important records close. Share meaningful moments. Reconnect with people and
-            discover everyday value — all within Quircle.
+            {t("hero_sub")}
           </motion.p>
 
           <motion.div
@@ -133,7 +133,7 @@ export function HeroSection() {
               }}
               className="inline-flex items-center gap-2 rounded-xl bg-qp-deep px-7 py-4 text-base font-bold text-white shadow-[0_16px_36px_-14px_rgba(67,33,106,0.55)] transition-all duration-200 hover:bg-qp-purple hover:shadow-[0_20px_44px_-14px_rgba(112,68,183,0.6)] active:scale-[0.98]"
             >
-              Discover Quircle
+              {t("hero_cta1")}
               <ArrowDownRight size={18} strokeWidth={2.5} />
             </a>
             <a
@@ -143,7 +143,7 @@ export function HeroSection() {
               onClick={() => track("brochure_download", "hero")}
               className="inline-flex items-center gap-2 rounded-xl border-2 border-qp-line bg-white px-7 py-[14px] text-base font-bold text-qp-deep transition-all duration-200 hover:border-qp-orange hover:text-qp-ember active:scale-[0.98]"
             >
-              Get the brochure
+              {t("hero_cta2")}
               <Download size={18} strokeWidth={2.5} />
             </a>
           </motion.div>
@@ -155,7 +155,7 @@ export function HeroSection() {
             className="mt-6 flex items-center gap-2 text-xs font-medium tracking-wide text-qp-muted"
           >
             <span className="inline-block h-1.5 w-1.5 rounded-full bg-qp-orange" />
-            Product preview · Explore the features below
+            {t("hero_note")}
           </motion.p>
         </div>
 
@@ -187,7 +187,7 @@ export function HeroSection() {
                 className="absolute inset-0 bg-gradient-to-t from-qp-deep/25 via-transparent to-transparent"
               />
               <p className="absolute bottom-5 left-6 right-6 font-editorial text-lg italic text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-                More together. Less scattered.
+                {t("hero_caption")}
               </p>
             </div>
           </motion.div>

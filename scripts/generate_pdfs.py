@@ -86,7 +86,7 @@ def make_doc(path, footer_label):
         canvas.setFont("Helvetica-Bold", 15 if cover else 10)
         canvas.drawString(MARGIN, PAGE_H - (30 * mm if cover else 13.5 * mm), "Quircle")
         canvas.setFillColor(ORANGE)
-        canvas.circle(MARGIN + (31 if cover else 22) * mm, PAGE_H - (27.5 * mm if cover else 11.6 * mm), 2.4 * mm if cover else 1.6 * mm, stroke=0, fill=1)
+        canvas.circle(MARGIN + (24 if cover else 22) * mm, PAGE_H - (28.8 * mm if cover else 11.6 * mm), 2.2 * mm if cover else 1.6 * mm, stroke=0, fill=1)
         if cover:
             canvas.setFillColor(HexColor("#D9C9EF"))
             canvas.setFont("Helvetica", 9)
@@ -120,7 +120,6 @@ def photo(width=150 * mm):
 def build_brochure(path):
     doc = make_doc(path, "Brochure")
     story = [
-        kicker("Your records. Your memories. Your people."),
         Paragraph("Your family life,<br/>connected.", S["cover_title"]),
         Paragraph("A shared place for important records, meaningful memories and everyday possibilities.", S["intro"]),
         photo(),
@@ -183,7 +182,6 @@ def build_catalogue(path):
         P.append(PageBreak())
 
     P.extend([
-        kicker("Your records. Your memories. Your people."),
         Paragraph("Everyday life.<br/>Connected.", S["cover_title"]),
         Paragraph("Feature catalogue | Uses, benefits, information needs and availability.", S["intro"]),
         photo(),

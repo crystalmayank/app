@@ -144,3 +144,34 @@
     animation: none;
   }
 }
+
+/* Google Translate widget — slim pill, no banner offset */
+.goog-te-gadget {
+  font-size: 0 !important;
+}
+.goog-te-gadget .goog-te-combo {
+  font-family: 'DM Sans Variable', 'Noto Sans Devanagari', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #43216A;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  max-width: 128px;
+}
+.goog-te-gadget > span,
+.goog-te-gadget img {
+  display: none !important;
+}
+.goog-te-banner-frame,
+.skiptranslate > iframe {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.VIpgJd-ZVi9od-l4eHX-hSRGPd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none !important;
+}

@@ -3,6 +3,7 @@ import Lenis from "lenis";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { GoogleTranslate } from "@/components/GoogleTranslate";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { BenefitRibbon } from "@/components/sections/BenefitRibbon";
 import { BentoFeaturesGrid } from "@/components/sections/BentoFeaturesGrid";
@@ -60,6 +61,7 @@ export default function Landing() {
         <ClosingCta />
       </main>
       <Footer />
+      <GoogleTranslate />
       <Toaster richColors />
     </div>
   );

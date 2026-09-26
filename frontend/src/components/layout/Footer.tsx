@@ -1,7 +1,9 @@
 import { QuircleLogo } from "@/components/QuircleLogo";
 import { NAV_LINKS, APP_PREVIEW_URL, scrollToHash } from "@/lib/content";
+import { useLang } from "@/lib/i18n";
 
 export function Footer() {
+  const { t } = useLang();
   return (
     <footer data-testid="footer-container" className="border-t border-qp-line bg-white">
       <div className="mx-auto max-w-[1240px] px-5 py-14 sm:px-7 lg:px-10">
@@ -38,7 +40,7 @@ export function Footer() {
                       }}
                       className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
                     >
-                      {l.label}
+                      {t(l.key)}
                     </a>
                   </li>
                 ))}
@@ -91,8 +93,8 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-qp-line pt-6 text-xs leading-relaxed text-qp-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            Features and availability may change. Lifestyle image is illustrative. This is a product
-            preview website, not an app-store listing.
+            Features and availability may change. Lifestyle and feature images are illustrative.
+            This is a product preview website, not an app-store listing.
           </p>
           <a
             href="#data"

@@ -16,6 +16,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 from lib.db import client, db, ensure_indexes
+from lib.emailer import send_signup_emails
 
 
 @asynccontextmanager
@@ -75,6 +76,9 @@ async def create_notify(input: NotifyRequest):
         doc["id"] = str(uuid.uuid4())
         doc["created_at"] = datetime.now(timezone.utc)
         await db.notify_signups.insert_one(doc)
+        asyncio.create_task(
+            send_signup_emails(input.name.strip(), email, input.city.strip(), input.family_size, input.role)
+        )
     total = await db.notify_signups.count_documents({})
     message = "You are already on the list." if existing else "You are on the list. We will write to you soon."
     return NotifyResponse(ok=True, message=message, total=total, already_registered=bool(existing))

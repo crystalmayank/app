@@ -2,8 +2,10 @@ import { ArrowUpRight, Download } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { APP_PREVIEW_URL, BROCHURE_URL } from "@/lib/content";
 import { track } from "@/lib/analytics";
+import { useLang } from "@/lib/i18n";
 
 export function ClosingCta() {
+  const { t } = useLang();
   return (
     <section className="py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
@@ -29,10 +31,10 @@ export function ClosingCta() {
               Keep what matters close
             </p>
             <h2 className="relative mx-auto mt-5 max-w-3xl font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Your records. Your memories.
+              {t("closing_h2a")}
               <br />
               <span className="font-editorial font-medium italic text-[#FFB787]">
-                Your people. Your Quircle.
+                {t("closing_h2b")}
               </span>
             </h2>
 
@@ -45,7 +47,7 @@ export function ClosingCta() {
                 onClick={() => track("preview_click", "closing-cta")}
                 className="inline-flex items-center gap-2 rounded-xl bg-qp-orange px-8 py-4 text-base font-bold text-white shadow-[0_18px_40px_-14px_rgba(236,119,45,0.65)] transition-all duration-200 hover:bg-[#FF8A3D] active:scale-[0.98]"
               >
-                Open app preview
+                {t("closing_cta1")}
                 <ArrowUpRight size={18} strokeWidth={2.5} />
               </a>
               <a
@@ -55,7 +57,7 @@ export function ClosingCta() {
                 onClick={() => track("brochure_download", "closing-cta")}
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-white/25 px-8 py-[14px] text-base font-bold text-white transition-all duration-200 hover:border-white/60 active:scale-[0.98]"
               >
-                Get the brochure
+                {t("closing_cta2")}
                 <Download size={18} strokeWidth={2.5} />
               </a>
             </div>

@@ -1,6 +1,7 @@
 import { Search, FolderOpen, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { scrollToHash } from "@/lib/content";
+import { useLang } from "@/lib/i18n";
 
 function CardShell({
   testid,
@@ -35,7 +36,20 @@ function Chip({ children }: { children: React.ReactNode }) {
   );
 }
 
+function CardArt({ src, alt, testid }: { src: string; alt: string; testid: string }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      data-testid={testid}
+      className="mb-6 h-44 w-full rounded-2xl border border-qp-line object-cover"
+    />
+  );
+}
+
 export function BentoFeaturesGrid() {
+  const { t } = useLang();
   return (
     <section id="features" className="scroll-mt-24 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
@@ -44,9 +58,9 @@ export function BentoFeaturesGrid() {
             Meet your everyday Quircle
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
-            Less searching.
+            {t("features_h2a")}
             <br />
-            <span className="font-editorial font-medium italic text-qp-deep">More living.</span>
+            <span className="font-editorial font-medium italic text-qp-deep">{t("features_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
             From finding a document to finding a familiar face, Quircle brings useful parts of
@@ -59,6 +73,11 @@ export function BentoFeaturesGrid() {
             <CardShell testid="bento-vault-card" className="h-full">
               <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-qp-lav transition-transform duration-500 group-hover:scale-125" aria-hidden="true" />
               <div className="relative">
+                <CardArt
+                  src="/assets/document-vault.jpg"
+                  alt="Illustration of the Quircle document vault with organized folders"
+                  testid="bento-vault-art"
+                />
                 <CardMeta>01 / Documents</CardMeta>
                 <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
                   Your important papers. A place to belong.
@@ -107,6 +126,11 @@ export function BentoFeaturesGrid() {
 
           <Reveal className="lg:col-span-5" delay={0.12}>
             <CardShell testid="bento-health-card" className="h-full bg-qp-lav/60">
+              <CardArt
+                src="/assets/health-records.jpg"
+                alt="Illustration of family members reviewing shared health records with permission"
+                testid="bento-health-art"
+              />
               <CardMeta>02 / Health Records</CardMeta>
               <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
                 A clearer health history.
@@ -128,6 +152,11 @@ export function BentoFeaturesGrid() {
 
           <Reveal className="lg:col-span-5" delay={0.05}>
             <CardShell testid="bento-family-card" className="h-full">
+              <CardArt
+                src="/assets/photo-memories.jpg"
+                alt="Illustration of a family sharing photo memories with a chosen audience in Quircle"
+                testid="bento-family-art"
+              />
               <CardMeta>03 / Family &amp; Memories</CardMeta>
               <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
                 Keep the connection going.
@@ -151,6 +180,11 @@ export function BentoFeaturesGrid() {
             <CardShell testid="bento-marketplace-card" className="h-full bg-qp-warm/70">
               <div className="absolute -bottom-20 -left-16 h-52 w-52 rounded-full bg-qp-orange/10 transition-transform duration-500 group-hover:scale-125" aria-hidden="true" />
               <div className="relative">
+                <CardArt
+                  src="/assets/live-bidding.jpg"
+                  alt="Illustration of live bidding on a smartphone with a gavel and countdown"
+                  testid="bento-marketplace-art"
+                />
                 <CardMeta>04 / Marketplace &amp; Live Bid</CardMeta>
                 <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
                   Discover it. Compare it. Bid for it.

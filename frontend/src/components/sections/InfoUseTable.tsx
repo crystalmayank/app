@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { useLang } from "@/lib/i18n";
 import {
   Table,
   TableBody,
@@ -49,6 +50,7 @@ const ROWS = [
 ];
 
 export function InfoUseTable() {
+  const { t } = useLang();
   return (
     <section id="data" className="scroll-mt-24 bg-qp-lav/70 py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
@@ -57,9 +59,9 @@ export function InfoUseTable() {
             Understand your information
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
-            Useful details.
+            {t("data_h2a")}
             <br />
-            <span className="font-editorial font-medium italic text-qp-deep">A clear purpose.</span>
+            <span className="font-editorial font-medium italic text-qp-deep">{t("data_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
             These examples explain how information supports Quircle’s features. Check the app’s
@@ -117,8 +119,9 @@ export function InfoUseTable() {
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-qp-muted">
             This page explains product use; it is not a privacy policy or a security certification.
             This website stores the details you submit in the early-access form and records simple,
-            anonymous counts of button clicks (downloads and preview opens) — nothing else is
-            tracked.
+            anonymous counts of button clicks (downloads and preview opens). The optional
+            translate button is provided by Google Translate and loads Google’s script only when
+            you use it.
           </p>
         </Reveal>
       </div>
