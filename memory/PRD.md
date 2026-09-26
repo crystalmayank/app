@@ -47,7 +47,13 @@ Faithful copy from owner's Appendix A; planned-status honesty for Find a Friend;
 - Owner alert emails: code ready (send_signup_emails fires when OWNER_EMAIL set) — address still not supplied by user; Twilio SMS declined by user (WhatsApp wa.me flow stays)
 - Bugfix (user-reported): Google Translate widget was restricted to 10 Indian languages with no English — removed includedLanguages so all 249 languages incl. English are offered and switching back to English works; added notranslate to logo wordmark and EN/हिं toggle. Verified in browser: ES/FR translate → English reappears → revert restores text, toggle/brand intact
 
+## Implemented (26 Sep 2026, iteration 4)
+- Full Hindi page: i18n dictionary expanded to ~230 keys (EN/हिं) covering every section — body copy, steps, info table, downloads, notify form labels/options, get-app, closing, footer. Verified in browser: full-page Hindi renders, English revert clean. Google Translate widget remains for 249 other languages
+- QR code beside phone mockup in Get App section: /assets/app-qr.png (purple-on-white, error-correction M) pointing at the app preview URL; regenerate via python qrcode lib if URL changes
+- Twilio SMS: declined by user again (WhatsApp wa.me flow remains the send-to-mobile path)
+- Owner alerts: STILL PENDING — user keeps selecting "I'll type my email" without typing it; code armed, needs OWNER_EMAIL in backend/.env only
+
 ## Backlog
-- P0: none blocking
-- P1: real email sending for notify list (Resend); permanent app-store links when owner supplies them; Hindi adaptation of copy (owner has approved Hindi lines)
-- P2: PDF preview modal; admin view of signups/analytics; section-view tracking; OG/social share image
+- P0: OWNER_EMAIL from user (one-line .env addition turns owner alerts on)
+- P1: Twilio SMS (declined twice by user — only revisit if they ask); permanent app-store links when owner supplies them
+- P2: Hindi versions of the brochure/catalogue PDFs; section-view tracking; downloadable signup list filters (date range) on /admin

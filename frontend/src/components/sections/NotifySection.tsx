@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { apiGet, apiPost } from "@/lib/api";
-import { useLang } from "@/lib/i18n";
+import { useLang, type StringKey } from "@/lib/i18n";
 
 interface NotifyResponse {
   ok: boolean;
@@ -30,13 +30,13 @@ interface StatsResponse {
   preview_clicks: number;
 }
 
-const FAMILY_SIZES: Record<string, string> = { "2": "1–2 people", "4": "3–4 people", "6": "5 or more" };
-const ROLES: Record<string, string> = {
-  parent: "Parent / household organizer",
-  elder: "Elder family member",
-  young_adult: "Young adult",
-  professional: "Working professional",
-  other: "Something else",
+const FAMILY_SIZES: Record<string, StringKey> = { "2": "nt_fs1", "4": "nt_fs2", "6": "nt_fs3" };
+const ROLES: Record<string, StringKey> = {
+  parent: "nt_r1",
+  elder: "nt_r2",
+  young_adult: "nt_r3",
+  professional: "nt_r4",
+  other: "nt_r5",
 };
 
 export function NotifySection() {
@@ -88,7 +88,7 @@ export function NotifySection() {
       <div className="mx-auto grid max-w-[1240px] items-center gap-14 px-5 sm:px-7 lg:grid-cols-2 lg:px-10">
         <Reveal>
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-            Get launch updates
+            {t("nt_eyebrow")}
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
             {t("notify_h2a")}
@@ -96,8 +96,7 @@ export function NotifySection() {
             <span className="font-editorial font-medium italic text-qp-deep">{t("notify_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-qp-muted sm:text-lg">
-            Leave your details and we will write to you when new features land — including the
-            planned Find a Friend matching. No spam, no selling your details.
+            {t("nt_p")}
           </p>
 
           <div
@@ -108,17 +107,20 @@ export function NotifySection() {
               <Users size={18} strokeWidth={2.3} />
             </span>
             <p className="text-sm text-qp-muted">
-              {stats.data && stats.data.signups > 0 ? (
-                <>
-                  <span className="font-heading text-lg font-extrabold text-qp-deep">
-                    {stats.data.signups}
-                  </span>{" "}
-                  {stats.data.signups === 1 ? "person has" : "people have"} registered interest so
-                  far.
-                </>
-              ) : (
-                "Be among the first to register your interest."
-              )}
+              {stats.data && stats.data.signups > 0
+                ? t("nt_count")
+                    .split("{n}")
+                    .map((part, i, arr) => (
+                      <span key={i}>
+                        {part}
+                        {i < arr.length - 1 && (
+                          <span className="font-heading text-base font-extrabold text-qp-deep">
+                            {stats.data.signups}
+                          </span>
+                        )}
+                      </span>
+                    ))
+                : t("nt_empty")}
             </p>
           </div>
         </Reveal>
@@ -135,7 +137,7 @@ export function NotifySection() {
             <div className="space-y-5">
               <div>
                 <Label htmlFor="notify-name" className="text-sm font-semibold text-qp-ink">
-                  Your name
+                  {t("nt_name")}
                 </Label>
                 <Input
                   id="notify-name"
@@ -150,7 +152,7 @@ export function NotifySection() {
               </div>
               <div>
                 <Label htmlFor="notify-email" className="text-sm font-semibold text-qp-ink">
-                  Email
+                  {t("nt_email")}
                 </Label>
                 <Input
                   id="notify-email"
@@ -165,7 +167,7 @@ export function NotifySection() {
               </div>
               <div>
                 <Label htmlFor="notify-city" className="text-sm font-semibold text-qp-ink">
-                  City
+                  {t("nt_city")}
                 </Label>
                 <Input
                   id="notify-city"
@@ -180,38 +182,38 @@ export function NotifySection() {
               </div>
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
-                  <Label className="text-sm font-semibold text-qp-ink">Family size</Label>
+                  <Label className="text-sm font-semibold text-qp-ink">{t("nt_family")}</Label>
                   <Select value={familySize} onValueChange={(v: string) => setFamilySize(v)}>
                     <SelectTrigger
                       data-testid="notify-select-family-size"
-                      aria-label="Family size"
+                      aria-label={t("nt_family")}
                       className="mt-2 h-12 w-full rounded-xl border-qp-line"
                     >
-                      <SelectValue>{(v: string) => (v ? FAMILY_SIZES[v] : "Select")}</SelectValue>
+                      <SelectValue>{(v: string) => (v ? t(FAMILY_SIZES[v]) : t("nt_select"))}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
-                      {Object.entries(FAMILY_SIZES).map(([value, label]) => (
+                      {Object.entries(FAMILY_SIZES).map(([value, key]) => (
                         <SelectItem key={value} value={value}>
-                          {label}
+                          {t(key)}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label className="text-sm font-semibold text-qp-ink">I am a…</Label>
+                  <Label className="text-sm font-semibold text-qp-ink">{t("nt_role")}</Label>
                   <Select value={role} onValueChange={(v: string) => setRole(v)}>
                     <SelectTrigger
                       data-testid="notify-select-role"
-                      aria-label="Your role"
+                      aria-label={t("nt_role")}
                       className="mt-2 h-12 w-full rounded-xl border-qp-line"
                     >
-                      <SelectValue>{(v: string) => (v ? ROLES[v] : "Select")}</SelectValue>
+                      <SelectValue>{(v: string) => (v ? t(ROLES[v]) : t("nt_select"))}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
-                      {Object.entries(ROLES).map(([value, label]) => (
+                      {Object.entries(ROLES).map(([value, key]) => (
                         <SelectItem key={value} value={value}>
-                          {label}
+                          {t(key)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -226,11 +228,11 @@ export function NotifySection() {
               disabled={!ready || mutation.isPending}
               className="mt-7 h-13 w-full rounded-xl bg-qp-deep py-4 text-base font-bold text-white transition-all duration-200 hover:bg-qp-purple active:scale-[0.98] disabled:opacity-50"
             >
-              {mutation.isPending ? "Saving…" : "Notify me at launch"}
+              {mutation.isPending ? t("nt_saving") : t("nt_submit")}
               <Send size={17} strokeWidth={2.4} />
             </Button>
             <p className="mt-4 text-center text-xs leading-relaxed text-qp-muted">
-              Your details are stored only to contact you about Quircle. Nothing else.
+              {t("nt_note")}
             </p>
           </form>
         </Reveal>

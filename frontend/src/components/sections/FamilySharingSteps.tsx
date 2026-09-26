@@ -1,25 +1,10 @@
 import { Reveal } from "@/components/Reveal";
-import { useLang } from "@/lib/i18n";
+import { useLang, type StringKey } from "@/lib/i18n";
 
-const STEPS = [
-  {
-    n: "1",
-    title: "Bring it together",
-    body: "Add the documents, records or photos relevant to you.",
-    testid: "family-step-1",
-  },
-  {
-    n: "2",
-    title: "Choose what to share",
-    body: "Review the file, audience and access options before sending.",
-    testid: "family-step-2",
-  },
-  {
-    n: "3",
-    title: "Keep access intentional",
-    body: "Use the available sharing controls and review who can see your information. Downloaded copies may remain with recipients.",
-    testid: "family-step-3",
-  },
+const STEPS: { n: string; title: StringKey; body: StringKey; testid: string }[] = [
+  { n: "1", title: "share_s1t", body: "share_s1b", testid: "family-step-1" },
+  { n: "2", title: "share_s2t", body: "share_s2b", testid: "family-step-2" },
+  { n: "3", title: "share_s3t", body: "share_s3b", testid: "family-step-3" },
 ];
 
 export function FamilySharingSteps() {
@@ -30,7 +15,7 @@ export function FamilySharingSteps() {
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr]">
           <Reveal>
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-              A practical family benefit
+              {t("share_eyebrow")}
             </p>
             <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
               {t("sharing_h2a")}
@@ -38,12 +23,10 @@ export function FamilySharingSteps() {
               <span className="font-editorial font-medium italic text-qp-deep">{t("sharing_h2b")}</span>
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
-              A selected document for a sibling. A report ready for an appointment. A photograph that
-              brings everyone back to the same moment.
+              {t("share_p1")}
             </p>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-qp-muted">
-              Quircle’s family, vault and health areas are designed around these everyday needs. A
-              family connection should never be treated as permission to see every private record.
+              {t("share_p2")}
             </p>
           </Reveal>
           <Reveal delay={0.12}>
@@ -69,9 +52,9 @@ export function FamilySharingSteps() {
                   {s.n}
                 </span>
                 <h3 className="mt-5 font-heading text-xl font-bold tracking-tight text-qp-ink sm:text-2xl">
-                  {s.title}
+                  {t(s.title)}
                 </h3>
-                <p className="mt-2.5 text-[15px] leading-relaxed text-qp-muted">{s.body}</p>
+                <p className="mt-2.5 text-[15px] leading-relaxed text-qp-muted">{t(s.body)}</p>
               </div>
             </Reveal>
           ))}

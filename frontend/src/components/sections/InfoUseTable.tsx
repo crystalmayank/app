@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/Reveal";
-import { useLang } from "@/lib/i18n";
+import { useLang, type StringKey } from "@/lib/i18n";
 import {
   Table,
   TableBody,
@@ -9,44 +9,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const ROWS = [
-  {
-    testid: "info-table-row-account",
-    info: "Account & profile details",
-    why: "Access your account and identify yourself to connections.",
-    review: "Which profile fields are visible.",
-  },
-  {
-    testid: "info-table-row-documents",
-    info: "Documents & file details",
-    why: "Organize, search and share chosen records.",
-    review: "Recipients, scope and link access.",
-  },
-  {
-    testid: "info-table-row-health",
-    info: "Health records",
-    why: "Keep a history for you and authorized care conversations.",
-    review: "Patient, selected reports and sharing consent.",
-  },
-  {
-    testid: "info-table-row-photos",
-    info: "Photos & social activity",
-    why: "Share memories and keep conversations going.",
-    review: "Audience and location before posting.",
-  },
-  {
-    testid: "info-table-row-education",
-    info: "Education & work details",
-    planned: true,
-    why: "Suggest people with a relevant shared institution or period.",
-    review: "Optional discovery and connection choices.",
-  },
-  {
-    testid: "info-table-row-marketplace",
-    info: "Listings, bids & order details",
-    why: "Support product discovery and transaction follow-up.",
-    review: "Total cost, seller terms and delivery details.",
-  },
+const ROWS: { testid: string; info: StringKey; why: StringKey; review: StringKey; planned?: boolean }[] = [
+  { testid: "info-table-row-account", info: "data_r1a", why: "data_r1b", review: "data_r1c" },
+  { testid: "info-table-row-documents", info: "data_r2a", why: "data_r2b", review: "data_r2c" },
+  { testid: "info-table-row-health", info: "data_r3a", why: "data_r3b", review: "data_r3c" },
+  { testid: "info-table-row-photos", info: "data_r4a", why: "data_r4b", review: "data_r4c" },
+  { testid: "info-table-row-education", info: "data_r5a", why: "data_r5b", review: "data_r5c", planned: true },
+  { testid: "info-table-row-marketplace", info: "data_r6a", why: "data_r6b", review: "data_r6c" },
 ];
 
 export function InfoUseTable() {
@@ -56,7 +25,7 @@ export function InfoUseTable() {
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
         <Reveal>
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-            Understand your information
+            {t("data_eyebrow")}
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
             {t("data_h2a")}
@@ -64,9 +33,7 @@ export function InfoUseTable() {
             <span className="font-editorial font-medium italic text-qp-deep">{t("data_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
-            These examples explain how information supports Quircle’s features. Check the app’s
-            current notices and permission screens for the exact collection, access and retention
-            terms.
+            {t("data_p")}
           </p>
         </Reveal>
 
@@ -79,13 +46,13 @@ export function InfoUseTable() {
               <TableHeader>
                 <TableRow className="bg-qp-deep hover:bg-qp-deep">
                   <TableHead className="px-6 py-5 text-xs font-bold uppercase tracking-[0.14em] text-white">
-                    Information
+                    {t("data_th1")}
                   </TableHead>
                   <TableHead className="px-6 py-5 text-xs font-bold uppercase tracking-[0.14em] text-white">
-                    Why it is useful
+                    {t("data_th2")}
                   </TableHead>
                   <TableHead className="px-6 py-5 text-xs font-bold uppercase tracking-[0.14em] text-white">
-                    What to review
+                    {t("data_th3")}
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -94,19 +61,19 @@ export function InfoUseTable() {
                   <TableRow key={r.testid} data-testid={r.testid} className="border-qp-line">
                     <TableCell className="px-6 py-5 align-top font-semibold text-qp-ink">
                       <span className="flex flex-wrap items-center gap-2">
-                        {r.info}
+                        {t(r.info)}
                         {r.planned && (
                           <span className="rounded-full bg-qp-orange px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                            Planned matching
+                            {t("data_r5badge")}
                           </span>
                         )}
                       </span>
                     </TableCell>
                     <TableCell className="px-6 py-5 align-top text-[15px] leading-relaxed text-qp-muted">
-                      {r.why}
+                      {t(r.why)}
                     </TableCell>
                     <TableCell className="px-6 py-5 align-top text-[15px] leading-relaxed text-qp-muted">
-                      {r.review}
+                      {t(r.review)}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -117,11 +84,7 @@ export function InfoUseTable() {
 
         <Reveal delay={0.15}>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-qp-muted">
-            This page explains product use; it is not a privacy policy or a security certification.
-            This website stores the details you submit in the early-access form and records simple,
-            anonymous counts of button clicks (downloads and preview opens). The optional
-            translate button is provided by Google Translate and loads Google’s script only when
-            you use it.
+            {t("data_note")}
           </p>
         </Reveal>
       </div>

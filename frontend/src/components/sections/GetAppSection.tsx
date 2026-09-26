@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { ArrowUpRight, Link2, MessageCircle, Smartphone } from "lucide-react";
+import { ArrowUpRight, Link2, MessageCircle, QrCode, Smartphone } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { Input } from "@/components/ui/input";
 import { APP_PREVIEW_URL } from "@/lib/content";
@@ -45,15 +45,14 @@ export function GetAppSection() {
     <section id="get-app" className="scroll-mt-24 overflow-hidden py-20 sm:py-24 lg:py-28">
       <div className="mx-auto grid max-w-[1240px] items-center gap-14 px-5 sm:px-7 lg:grid-cols-2 lg:px-10">
         <Reveal>
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">Get the app</p>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">{t("ga_eyebrow")}</p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
             {t("getapp_h2a")}
             <br />
             <span className="font-editorial font-medium italic text-qp-deep">{t("getapp_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-qp-muted sm:text-lg">
-            See your family life come together on your phone — documents, health, memories and the
-            marketplace in one Quircle home screen.
+            {t("ga_p")}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -66,7 +65,7 @@ export function GetAppSection() {
               className="inline-flex items-center gap-2 rounded-xl bg-qp-deep px-7 py-4 text-base font-bold text-white shadow-[0_16px_36px_-14px_rgba(67,33,106,0.55)] transition-all duration-200 hover:bg-qp-purple active:scale-[0.98]"
             >
               <Smartphone size={18} strokeWidth={2.4} />
-              Open app preview
+              {t("ga_open")}
               <ArrowUpRight size={16} strokeWidth={2.5} />
             </a>
             <button
@@ -76,12 +75,12 @@ export function GetAppSection() {
               className="inline-flex items-center gap-2 rounded-xl border-2 border-qp-line bg-white px-6 py-[14px] text-base font-bold text-qp-deep transition-all duration-200 hover:border-qp-orange hover:text-qp-ember active:scale-[0.98]"
             >
               <Link2 size={18} strokeWidth={2.4} />
-              Copy app link
+              {t("ga_copy")}
             </button>
           </div>
 
           <div className="mt-8 max-w-lg rounded-2xl border border-qp-line bg-white p-5">
-            <p className="text-sm font-bold text-qp-ink">Send the link to a mobile number</p>
+            <p className="text-sm font-bold text-qp-ink">{t("ga_send_h")}</p>
             <div className="mt-3 flex gap-2.5">
               <Input
                 type="tel"
@@ -110,45 +109,65 @@ export function GetAppSection() {
               </button>
             </div>
             <p className="mt-2.5 text-xs leading-relaxed text-qp-muted">
-              Opens WhatsApp with the app link ready to send to that number. For numbers outside
-              India, include the country code.
+              {t("ga_send_note")}
             </p>
           </div>
 
           <p className="mt-5 text-xs leading-relaxed text-qp-muted">
-            The current preview may require Expo Go or renewed access. App-store availability and a
-            permanent download link are not yet confirmed.
+            {t("ga_caveat")}
           </p>
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="relative mx-auto w-[280px] sm:w-[330px]">
-            <div
-              aria-hidden="true"
-              className="absolute -inset-10 rounded-full bg-gradient-to-br from-qp-lav via-qp-warm to-qp-lav blur-2xl"
-            />
-            <div
-              data-testid="get-app-phone-mockup"
-              className="group relative rounded-[3.4rem] border border-qp-line bg-qp-night p-2.5 shadow-[0_60px_120px_-40px_rgba(33,12,56,0.65)] transition-transform duration-500 hover:-rotate-1 hover:scale-[1.015]"
-            >
+          <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-center">
+            <div className="relative w-[280px] sm:w-[300px]">
               <div
                 aria-hidden="true"
-                className="absolute left-1/2 top-4 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-qp-night"
+                className="absolute -inset-10 rounded-full bg-gradient-to-br from-qp-lav via-qp-warm to-qp-lav blur-2xl"
               />
-              <img
-                src="/assets/app-home.jpg"
-                alt="Quircle app home screen showing Documents, Family and Health spaces, plus Social, Quick Help and Marketplace"
-                loading="lazy"
-                className="w-full rounded-[2.7rem]"
-              />
+              <div
+                data-testid="get-app-phone-mockup"
+                className="group relative rounded-[3.4rem] border border-qp-line bg-qp-night p-2.5 shadow-[0_60px_120px_-40px_rgba(33,12,56,0.65)] transition-transform duration-500 hover:-rotate-1 hover:scale-[1.015]"
+              >
+                <div
+                  aria-hidden="true"
+                  className="absolute left-1/2 top-4 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-qp-night"
+                />
+                <img
+                  src="/assets/app-home.jpg"
+                  alt="Quircle app home screen showing Documents, Family and Health spaces, plus Social, Quick Help and Marketplace"
+                  loading="lazy"
+                  className="w-full rounded-[2.7rem]"
+                />
+              </div>
+              <span
+                data-testid="get-app-phone-badge"
+                className="absolute -right-4 top-10 inline-flex items-center gap-1.5 rounded-full bg-qp-orange px-4 py-2 text-xs font-bold text-white shadow-[0_10px_26px_-8px_rgba(236,119,45,0.7)]"
+              >
+                <span className="pulse-dot inline-block h-1.5 w-1.5 rounded-full bg-white" />
+                {t("ga_badge")}
+              </span>
             </div>
-            <span
-              data-testid="get-app-phone-badge"
-              className="absolute -right-4 top-10 inline-flex items-center gap-1.5 rounded-full bg-qp-orange px-4 py-2 text-xs font-bold text-white shadow-[0_10px_26px_-8px_rgba(236,119,45,0.7)]"
+
+            <div
+              data-testid="get-app-qr-card"
+              className="relative rounded-3xl border border-qp-line bg-white p-5 text-center shadow-[0_24px_50px_-24px_rgba(67,33,106,0.35)] transition-transform duration-300 hover:-translate-y-1"
             >
-              <span className="pulse-dot inline-block h-1.5 w-1.5 rounded-full bg-white" />
-              Live preview
-            </span>
+              <span className="absolute -top-3 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-qp-deep px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white">
+                <QrCode size={12} strokeWidth={2.5} />
+                QR
+              </span>
+              <img
+                src="/assets/app-qr.png"
+                alt="QR code that opens the Quircle app preview"
+                loading="lazy"
+                data-testid="get-app-qr-image"
+                className="mx-auto mt-2 h-36 w-36 rounded-lg border border-qp-line"
+              />
+              <p className="mx-auto mt-3 max-w-[160px] text-xs font-semibold leading-snug text-qp-muted">
+                {t("ga_qr")}
+              </p>
+            </div>
           </div>
         </Reveal>
       </div>

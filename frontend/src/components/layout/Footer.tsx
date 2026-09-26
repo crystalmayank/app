@@ -21,13 +21,13 @@ export function Footer() {
               <QuircleLogo size={36} />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-qp-muted">
-              Your family life, connected. Product overview · September 2026.
+              {t("ft_tag")}
             </p>
           </div>
 
           <nav aria-label="Footer" className="grid grid-cols-2 gap-8 md:col-span-2 md:grid-cols-2">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-qp-purple">Explore</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-qp-purple">{t("ft_explore")}</p>
               <ul className="mt-4 space-y-2.5">
                 {NAV_LINKS.map((l) => (
                   <li key={l.hash}>
@@ -47,7 +47,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-qp-purple">Product</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-qp-purple">{t("ft_product")}</p>
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <a
@@ -57,7 +57,7 @@ export function Footer() {
                     data-testid="footer-link-app-preview"
                     className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
                   >
-                    Open app preview
+                    {t("ft_preview")}
                   </a>
                 </li>
                 <li>
@@ -70,7 +70,7 @@ export function Footer() {
                     }}
                     className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
                   >
-                    Get the app
+                    {t("ft_getapp")}
                   </a>
                 </li>
                 <li>
@@ -83,7 +83,7 @@ export function Footer() {
                     }}
                     className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
                   >
-                    Get launch updates
+                    {t("ft_notify")}
                   </a>
                 </li>
                 <li>
@@ -96,7 +96,7 @@ export function Footer() {
                     }}
                     className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
                   >
-                    Information &amp; choices
+                    {t("ft_info")}
                   </a>
                 </li>
               </ul>
@@ -105,10 +105,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-qp-line pt-6 text-xs leading-relaxed text-qp-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            Features and availability may change. Lifestyle and feature images are illustrative.
-            This is a product preview website, not an app-store listing.
-          </p>
+          <p>{t("ft_legal")}</p>
           <a
             href="#data"
             data-testid="footer-info-choices-anchor"
@@ -118,7 +115,7 @@ export function Footer() {
             }}
             className="shrink-0 font-semibold text-qp-purple hover:text-qp-orange"
           >
-            Information &amp; choices ↑
+            {t("ft_info")} ↑
           </a>
         </div>
       </div>

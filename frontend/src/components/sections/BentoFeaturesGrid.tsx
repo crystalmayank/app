@@ -1,7 +1,7 @@
 import { Search, FolderOpen, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { scrollToHash } from "@/lib/content";
-import { useLang } from "@/lib/i18n";
+import { useLang, type StringKey } from "@/lib/i18n";
 
 function CardShell({
   testid,
@@ -48,6 +48,10 @@ function CardArt({ src, alt, testid }: { src: string; alt: string; testid: strin
   );
 }
 
+const HEALTH_CHIPS: StringKey[] = ["feat2_c1", "feat2_c2", "feat2_c3", "feat2_c4", "feat2_c5", "feat2_c6"];
+const FAMILY_CHIPS: StringKey[] = ["feat3_c1", "feat3_c2", "feat3_c3", "feat3_c4", "feat3_c5"];
+const FOLDERS: StringKey[] = ["feat1_f1", "feat1_f2", "feat1_f3", "feat1_f4"];
+
 export function BentoFeaturesGrid() {
   const { t } = useLang();
   return (
@@ -55,7 +59,7 @@ export function BentoFeaturesGrid() {
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
         <Reveal>
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-            Meet your everyday Quircle
+            {t("feat_eyebrow")}
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
             {t("features_h2a")}
@@ -63,8 +67,7 @@ export function BentoFeaturesGrid() {
             <span className="font-editorial font-medium italic text-qp-deep">{t("features_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
-            From finding a document to finding a familiar face, Quircle brings useful parts of
-            daily life into one connected space.
+            {t("feat_intro")}
           </p>
         </Reveal>
 
@@ -78,31 +81,30 @@ export function BentoFeaturesGrid() {
                   alt="Illustration of the Quircle document vault with organized folders"
                   testid="bento-vault-art"
                 />
-                <CardMeta>01 / Documents</CardMeta>
+                <CardMeta>{t("feat1_meta")}</CardMeta>
                 <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
-                  Your important papers. A place to belong.
+                  {t("feat1_h")}
                 </h3>
                 <p className="mt-3 max-w-md text-[15px] leading-relaxed text-qp-muted">
-                  Organize IDs, certificates and other files in a document vault. Use folders,
-                  search and sharing controls to make chosen documents easier to reach.
+                  {t("feat1_b")}
                 </p>
                 <p className="mt-3 font-editorial text-[15px] italic text-qp-deep/80">
-                  For the moment someone asks, “Can you send that document?”
+                  {t("feat1_q")}
                 </p>
 
                 <div aria-hidden="true" className="mt-7 rounded-2xl border border-qp-line bg-qp-cream/60 p-4">
                   <div className="flex items-center gap-2.5 rounded-full border border-qp-line bg-white px-4 py-2.5 text-sm text-qp-muted">
                     <Search size={15} className="text-qp-purple" />
-                    Search “birth certificate”
+                    {t("feat1_search")}
                   </div>
                   <div className="mt-3.5 flex flex-wrap gap-2">
-                    {["IDs & certificates", "Property papers", "School records", "Insurance"].map((f) => (
+                    {FOLDERS.map((f) => (
                       <span
                         key={f}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-qp-line bg-white px-3 py-1.5 text-xs font-semibold text-qp-ink/75"
                       >
                         <FolderOpen size={13} className="text-qp-orange" />
-                        {f}
+                        {t(f)}
                       </span>
                     ))}
                   </div>
@@ -117,7 +119,7 @@ export function BentoFeaturesGrid() {
                   }}
                   className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-qp-purple transition-colors hover:text-qp-ember"
                 >
-                  See how sharing fits your life
+                  {t("feat1_link")}
                   <ArrowRight size={15} strokeWidth={2.5} />
                 </a>
               </div>
@@ -131,21 +133,18 @@ export function BentoFeaturesGrid() {
                 alt="Illustration of family members reviewing shared health records with permission"
                 testid="bento-health-art"
               />
-              <CardMeta>02 / Health Records</CardMeta>
+              <CardMeta>{t("feat2_meta")}</CardMeta>
               <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
-                A clearer health history.
+                {t("feat2_h")}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-qp-muted">
-                Keep reports, prescriptions, medicine details and hospital records together. Bring
-                the right information to your next doctor conversation.
-              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-qp-muted">{t("feat2_b")}</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["Prescriptions", "Lab reports", "Medicines", "Allergies", "Vaccines", "Reminders"].map((c) => (
-                  <Chip key={c}>{c}</Chip>
+                {HEALTH_CHIPS.map((c) => (
+                  <Chip key={c}>{t(c)}</Chip>
                 ))}
               </div>
               <p className="mt-6 border-l-[3px] border-qp-orange pl-4 font-editorial text-sm italic text-qp-deep/80">
-                Records support care; they do not replace it.
+                {t("feat2_note")}
               </p>
             </CardShell>
           </Reveal>
@@ -157,21 +156,18 @@ export function BentoFeaturesGrid() {
                 alt="Illustration of a family sharing photo memories with a chosen audience in Quircle"
                 testid="bento-family-art"
               />
-              <CardMeta>03 / Family &amp; Memories</CardMeta>
+              <CardMeta>{t("feat3_meta")}</CardMeta>
               <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
-                Keep the connection going.
+                {t("feat3_h")}
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-qp-muted">
-                Explore your family network, share photo memories, and stay in touch through chat.
-                Choose the audience for each social post.
-              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-qp-muted">{t("feat3_b")}</p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {["Family tree", "Circles", "Timeline", "Photo memories", "Chat"].map((c) => (
-                  <Chip key={c}>{c}</Chip>
+                {FAMILY_CHIPS.map((c) => (
+                  <Chip key={c}>{t(c)}</Chip>
                 ))}
               </div>
               <p className="mt-6 border-l-[3px] border-qp-purple pl-4 font-editorial text-sm italic text-qp-deep/80">
-                Everyday moments, shared thoughtfully.
+                {t("feat3_note")}
               </p>
             </CardShell>
           </Reveal>
@@ -185,13 +181,12 @@ export function BentoFeaturesGrid() {
                   alt="Illustration of live bidding on a smartphone with a gavel and countdown"
                   testid="bento-marketplace-art"
                 />
-                <CardMeta>04 / Marketplace &amp; Live Bid</CardMeta>
+                <CardMeta>{t("feat4_meta")}</CardMeta>
                 <h3 className="mt-3 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
-                  Discover it. Compare it. Bid for it.
+                  {t("feat4_h")}
                 </h3>
                 <p className="mt-3 max-w-md text-[15px] leading-relaxed text-qp-muted">
-                  Browse products, explore selling, and take part in bidding. Compare the full cost
-                  with your budget before committing.
+                  {t("feat4_b")}
                 </p>
 
                 <div
@@ -200,30 +195,30 @@ export function BentoFeaturesGrid() {
                 >
                   <div>
                     <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-qp-muted">
-                      Illustrative auction
+                      {t("feat4_auction")}
                     </p>
                     <p className="mt-1 font-heading text-lg font-bold text-qp-ink">
-                      Pre-loved teak bookshelf
+                      {t("feat4_item")}
                     </p>
                   </div>
                   <div className="flex items-center gap-6">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">Current bid</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">{t("feat4_bid")}</p>
                       <p className="font-heading text-xl font-extrabold text-qp-ember">Rs 1,850</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">Bids</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">{t("feat4_bids")}</p>
                       <p className="font-heading text-xl font-extrabold text-qp-ink">6</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">Ends in</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-wide text-qp-muted">{t("feat4_ends")}</p>
                       <p className="font-mono text-xl font-bold text-qp-deep">02:14:33</p>
                     </div>
                   </div>
                 </div>
 
                 <p className="mt-5 font-editorial text-sm italic text-qp-deep/80">
-                  A chance to find better value. Savings are not guaranteed.
+                  {t("feat4_note")}
                 </p>
               </div>
             </CardShell>

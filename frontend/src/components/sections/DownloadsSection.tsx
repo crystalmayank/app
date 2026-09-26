@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/dialog";
 import { BROCHURE_URL, CATALOGUE_URL, APP_PREVIEW_URL } from "@/lib/content";
 import { track } from "@/lib/analytics";
-import { useLang } from "@/lib/i18n";
+import { useLang, type StringKey } from "@/lib/i18n";
 
 interface DocDef {
   testid: string;
   previewTestid: string;
   icon: typeof FileText;
   meta: string;
-  title: string;
-  body: string;
+  titleKey: StringKey;
+  bodyKey: StringKey;
   href: string;
   event: string;
-  cta: string;
+  ctaKey: StringKey;
   slug: string;
   pages: number;
 }
@@ -31,11 +31,11 @@ const DOCS: DocDef[] = [
     previewTestid: "preview-brochure-btn",
     icon: FileText,
     meta: "PDF · 4 pages",
-    title: "The brochure",
-    body: "A concise introduction to Quircle’s purpose and benefits.",
+    titleKey: "dl1_t",
+    bodyKey: "dl1_b",
     href: BROCHURE_URL,
     event: "brochure_download",
-    cta: "Download brochure",
+    ctaKey: "dl1_cta",
     slug: "brochure",
     pages: 4,
   },
@@ -44,11 +44,11 @@ const DOCS: DocDef[] = [
     previewTestid: "preview-catalogue-btn",
     icon: BookOpen,
     meta: "PDF · 10 pages",
-    title: "The feature catalogue",
-    body: "Use cases, information needs and availability notes.",
+    titleKey: "dl2_t",
+    bodyKey: "dl2_b",
     href: CATALOGUE_URL,
     event: "catalogue_download",
-    cta: "Download catalogue",
+    ctaKey: "dl2_cta",
     slug: "catalogue",
     pages: 10,
   },
@@ -70,7 +70,7 @@ export function DownloadsSection() {
       <div className="mx-auto max-w-[1240px] px-5 sm:px-7 lg:px-10">
         <Reveal>
           <p className="text-xs font-bold uppercase tracking-[0.22em] text-qp-purple">
-            Take a closer look
+            {t("dl_eyebrow")}
           </p>
           <h2 className="mt-4 font-heading text-4xl font-extrabold leading-[1.08] tracking-tight text-qp-ink sm:text-5xl">
             {t("downloads_h2a")}
@@ -78,7 +78,7 @@ export function DownloadsSection() {
             <span className="font-editorial font-medium italic text-qp-deep">{t("downloads_h2b")}</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-qp-muted sm:text-lg">
-            Share the overview, explore the feature catalogue, or open the app preview.
+            {t("dl_p")}
           </p>
         </Reveal>
 
@@ -90,18 +90,18 @@ export function DownloadsSection() {
                   type="button"
                   data-testid={d.previewTestid}
                   onClick={() => openPreview(d)}
-                  aria-label={`Preview ${d.title}`}
+                  aria-label={`Preview ${t(d.titleKey)}`}
                   className="relative block w-full cursor-pointer"
                 >
                   <img
                     src={`/downloads/preview/${d.slug}-1.jpg`}
-                    alt={`${d.title} cover page`}
+                    alt={`${t(d.titleKey)} cover page`}
                     loading="lazy"
                     className="h-56 w-full border-b border-qp-line object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                   <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-qp-deep/90 px-3.5 py-1.5 text-xs font-bold text-white backdrop-blur">
                     <Eye size={13} strokeWidth={2.5} />
-                    Flip through
+                    {t("dl_flip")}
                   </span>
                 </button>
                 <div className="flex flex-1 flex-col p-8">
@@ -114,9 +114,9 @@ export function DownloadsSection() {
                     </span>
                   </div>
                   <h3 className="mt-5 font-heading text-2xl font-bold tracking-tight text-qp-ink sm:text-[28px]">
-                    {d.title}
+                    {t(d.titleKey)}
                   </h3>
-                  <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-qp-muted">{d.body}</p>
+                  <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-qp-muted">{t(d.bodyKey)}</p>
                   <a
                     href={d.href}
                     download
@@ -125,7 +125,7 @@ export function DownloadsSection() {
                     className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-qp-deep px-4 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:bg-qp-purple active:scale-[0.98]"
                   >
                     <Download size={17} strokeWidth={2.5} />
-                    {d.cta}
+                    {t(d.ctaKey)}
                   </a>
                 </div>
               </div>
@@ -135,7 +135,7 @@ export function DownloadsSection() {
 
         <Reveal delay={0.15}>
           <p className="mt-8 text-sm text-qp-muted">
-            Prefer to explore first?{" "}
+            {t("dl_prefer")}{" "}
             <a
               href={APP_PREVIEW_URL}
               target="_blank"
@@ -144,7 +144,7 @@ export function DownloadsSection() {
               onClick={() => track("preview_click", "downloads-section")}
               className="inline-flex items-center gap-1 font-bold text-qp-purple transition-colors hover:text-qp-ember"
             >
-              Open the app preview
+              {t("dl_open")}
               <ArrowUpRight size={14} strokeWidth={2.5} />
             </a>
           </p>
@@ -164,10 +164,10 @@ export function DownloadsSection() {
           <div className="flex items-center justify-between gap-4 border-b border-qp-line px-5 py-3.5 pr-14">
             <div>
               <DialogTitle className="font-heading text-lg font-bold text-qp-ink">
-                {preview?.title}
+                {preview ? t(preview.titleKey) : ""}
               </DialogTitle>
               <DialogDescription className="text-xs text-qp-muted">
-                {preview?.meta} · flip with the arrows
+                {preview?.meta} · {t("dl_modal_hint")}
               </DialogDescription>
             </div>
             {preview && (
@@ -179,7 +179,7 @@ export function DownloadsSection() {
                 className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-qp-deep px-4 py-2.5 text-xs font-bold text-white transition-colors hover:bg-qp-purple"
               >
                 <Download size={14} strokeWidth={2.5} />
-                Download
+                {t("dl_download")}
               </a>
             )}
           </div>
@@ -189,7 +189,7 @@ export function DownloadsSection() {
               <img
                 key={page}
                 src={`/downloads/preview/${preview.slug}-${page}.jpg`}
-                alt={`${preview.title}, page ${page} of ${preview.pages}`}
+                alt={`${t(preview.titleKey)}, page ${page} of ${preview.pages}`}
                 data-testid="pdf-preview-page"
                 className="absolute inset-0 mx-auto h-full w-auto max-w-full object-contain py-3"
               />

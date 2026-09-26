@@ -28,7 +28,7 @@ export function ClosingCta() {
             />
 
             <p className="relative text-xs font-bold uppercase tracking-[0.24em] text-[#B9A6D9]">
-              Keep what matters close
+              {t("cl_eyebrow")}
             </p>
             <h2 className="relative mx-auto mt-5 max-w-3xl font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
               {t("closing_h2a")}
@@ -63,8 +63,7 @@ export function ClosingCta() {
             </div>
 
             <p className="relative mx-auto mt-8 max-w-md text-xs leading-relaxed text-[#B9A6D9]">
-              The current preview may require Expo Go or renewed access. App-store availability and
-              a permanent launch link are not yet confirmed.
+              {t("cl_note")}
             </p>
           </div>
         </Reveal>
