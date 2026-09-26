@@ -39,6 +39,7 @@ Faithful copy from owner's Appendix A; planned-status honesty for Find a Friend;
 - Official Quircle logo (user-supplied) replaces the placeholder mark: header/footer (QuircleLogo.tsx), favicon (/assets/icon-192.png), OG card
 - PDF flip-through preview modals: every PDF page pre-rendered to /downloads/preview/{slug}-{n}.jpg (scripts via pymupdf); modal with arrows, dots, page indicator, in-modal download
 - User-supplied feature illustrations placed across the site: document-vault, health-records, photo-memories, live-bidding (bento), family-tree (sharing), find-friend (people), marketplace (commerce), quick-help, chat, news-room (services grid, News Room added as 4th card)
+- Deployment readiness (26 Sep 2026): deployment_agent health check PASS after two fixes — SITE_URL now from APP_URL env (emailer.py), app preview link moved to frontend/.env VITE_APP_PREVIEW_URL (import.meta.env)
 
 ## Backlog
 - P0: none blocking

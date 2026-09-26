@@ -17,7 +17,7 @@ EMAIL_KEY = os.environ.get("EMERGENT_EMAIL_KEY")
 EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "Quircle")
 EMAIL_REPLY_TO = os.environ.get("EMAIL_REPLY_TO")
 
-SITE_URL = "https://quircle-hub.preview.emergentagent.com"
+SITE_URL = os.environ.get("APP_URL", "")
 
 _SHORTENERS = ("bit.ly", "tinyurl.com", "t.co", "is.gd", "cutt.ly", "goo.gl", "rebrand.ly")
 _CRED_ASK = ("reply with your password", "reply with the code", "send your password", "cvv",
@@ -118,6 +118,13 @@ async def send_email(*, to: str, subject: str, html: str, reply_to: str | None =
 
 def _welcome_html(name: str) -> str:
     n = escape(name)
+    cta = (
+        '<p style="margin:24px 0"><a href="' + escape(SITE_URL) + '" '
+        'style="display:inline-block;background:#43216A;color:#ffffff;text-decoration:none;'
+        'font-size:14px;font-weight:bold;padding:14px 28px;border-radius:10px">Visit the Quircle preview site</a></p>'
+        if SITE_URL
+        else ""
+    )
     return (
         '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
         'style="background:#FFF8F3;padding:32px 16px;font-family:Arial,Helvetica,sans-serif">'
@@ -135,9 +142,7 @@ def _welcome_html(name: str) -> str:
         'documents, keeping health records together, sharing photo moments and exploring everyday buying '
         'and selling. We will write to you when new features land, including the planned Find a Friend '
         'matching.</p>'
-        '<p style="margin:24px 0"><a href="' + SITE_URL + '" '
-        'style="display:inline-block;background:#43216A;color:#ffffff;text-decoration:none;'
-        'font-size:14px;font-weight:bold;padding:14px 28px;border-radius:10px">Visit the Quircle preview site</a></p>'
+        + cta +
         '<p style="margin:0;font-size:14px;line-height:22px;color:#6B6375">Meanwhile, you can download the '
         'four-page brochure and ten-page feature catalogue from the site.</p>'
         '</td></tr>'
