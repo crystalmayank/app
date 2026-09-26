@@ -11,7 +11,8 @@ function LangToggle() {
     <div
       role="group"
       aria-label="Language"
-      className="flex items-center rounded-full border border-qp-line bg-white p-1"
+      className="notranslate flex items-center rounded-full border border-qp-line bg-white p-1"
+      translate="no"
     >
       <button
         type="button"

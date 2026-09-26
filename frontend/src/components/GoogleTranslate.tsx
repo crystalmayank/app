@@ -23,7 +23,6 @@ export function GoogleTranslate() {
       new window.google.translate.TranslateElement(
         {
           pageLanguage: "en",
-          includedLanguages: "hi,mr,bn,ta,te,gu,kn,ml,pa,ur",
           autoDisplay: false,
         },
         "google_translate_element"

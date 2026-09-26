@@ -10,7 +10,8 @@ export function QuircleLogo({ size = 40, dark = false }: { size?: number; dark?:
         className="rounded-[26%] object-cover shadow-sm"
       />
       <span
-        className={`font-heading text-2xl font-extrabold tracking-tight ${dark ? "text-white" : "text-qp-ink"}`}
+        className={`notranslate font-heading text-2xl font-extrabold tracking-tight ${dark ? "text-white" : "text-qp-ink"}`}
+        translate="no"
       >
         Quircle<span className="text-qp-orange">.</span>
       </span>

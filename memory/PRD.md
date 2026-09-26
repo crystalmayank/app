@@ -42,6 +42,11 @@ Faithful copy from owner's Appendix A; planned-status honesty for Find a Friend;
 - Deployment readiness (26 Sep 2026): deployment_agent health check PASS after two fixes — SITE_URL now from APP_URL env (emailer.py), app preview link moved to frontend/.env VITE_APP_PREVIEW_URL (import.meta.env)
 - Get the App section (#get-app, between notify and closing): phone mockup with real app home screenshot (/assets/app-home.jpg), Open app preview CTA, Copy app link (clipboard + toast), Send to mobile via wa.me prefilled WhatsApp message (no SMS gateway — visitor confirms send); footer link added; i18n keys getapp_h2a/h2b
 
+## Implemented (26 Sep 2026, iteration 3)
+- Private owner area at /admin: env-based single admin (ADMIN_EMAIL + single-quoted bcrypt ADMIN_PASSWORD_HASH, JWT_SECRET in backend/.env), POST /api/admin/login (JWT 12h, Bearer), GET /api/admin/signups (JSON) + GET /api/admin/signups.csv, 5-attempt/15-min brute-force lockout via login_attempts collection; React Admin.tsx: login card, dashboard (stats + table + Download CSV via fetch/blob), logout, 401 handling. Auth testing protocol saved to /app/auth_testing.md
+- Owner alert emails: code ready (send_signup_emails fires when OWNER_EMAIL set) — address still not supplied by user; Twilio SMS declined by user (WhatsApp wa.me flow stays)
+- Bugfix (user-reported): Google Translate widget was restricted to 10 Indian languages with no English — removed includedLanguages so all 249 languages incl. English are offered and switching back to English works; added notranslate to logo wordmark and EN/हिं toggle. Verified in browser: ES/FR translate → English reappears → revert restores text, toggle/brand intact
+
 ## Backlog
 - P0: none blocking
 - P1: real email sending for notify list (Resend); permanent app-store links when owner supplies them; Hindi adaptation of copy (owner has approved Hindi lines)
