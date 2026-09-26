@@ -1,0 +1,345 @@
+{
+  "project_name": "Quircle - Indian Family Life Super-App",
+  "archetype": "Pastel & Soft paired with High-Contrast Editorial Brand Identity (Indian Warmth meets Swiss Precision)",
+  "theme": "Light theme principal with vibrant royal purple (#43216A / #7044B7), energetic Indian saffron orange (#EC772D), warm cream backgrounds (#FFF8F3 / #FFF3E9), pale lavender surfaces (#F4F0FA), and high-contrast charcoal ink text (#252032)",
+  "typography": {
+    "font_family_heading": "'Plus Jakarta Sans Variable', sans-serif",
+    "font_family_body": "'DM Sans Variable', sans-serif",
+    "font_family_mono": "'Geist Mono Variable', monospace",
+    "font_family_editorial": "'Lora Variable', serif",
+    "import_statements": [
+      "@import '@fontsource-variable/plus-jakarta-sans';",
+      "@import '@fontsource-variable/dm-sans';",
+      "@import '@fontsource-variable/lora';",
+      "@import '@fontsource-variable/geist-mono';"
+    ],
+    "scale_px": {
+      "display": 60,
+      "h1": 48,
+      "h2": 36,
+      "h3": 24,
+      "body": 16,
+      "caption": 14
+    },
+    "rules": {
+      "display": "text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-[#252032]",
+      "h1": "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.12] text-[#252032]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-[1.2] text-[#252032]",
+      "h3": "text-xl sm:text-2xl font-semibold tracking-tight text-[#252032]",
+      "h4": "text-lg sm:text-xl font-semibold text-[#252032]",
+      "body": "text-base leading-relaxed text-[#252032]",
+      "body_muted": "text-sm sm:text-base leading-relaxed text-[#6B6375]",
+      "caption": "text-xs sm:text-sm font-medium tracking-wide text-[#6B6375]",
+      "overline": "text-xs font-bold uppercase tracking-[0.2em] text-[#7044B7]"
+    }
+  },
+  "colors": {
+    "brand": {
+      "deep_purple": "#43216A",
+      "accent_purple": "#7044B7",
+      "saffron_orange": "#EC772D",
+      "warm_orange_glow": "#FF8A3D",
+      "charcoal_ink": "#252032",
+      "secondary_text": "#6B6375",
+      "border_soft": "#E6E0EB",
+      "pale_purple": "#F4F0FA",
+      "warm_cream": "#FFF8F3",
+      "warm_orange_surface": "#FFF3E9",
+      "pure_white": "#FFFFFF"
+    },
+    "accent": "#EC772D",
+    "on_accent": "#FFFFFF",
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#FFF8F3",
+        "on_bg": "#252032",
+        "on_bg_muted": "#6B6375",
+        "roles": {
+          "link": "#7044B7",
+          "error": "#D32F2F",
+          "success": "#1B8A5A",
+          "warning": "#C76200"
+        }
+      },
+      {
+        "name": "white_card",
+        "kind": "solid",
+        "bg": "#FFFFFF",
+        "on_bg": "#252032",
+        "on_bg_muted": "#6B6375",
+        "roles": {
+          "link": "#7044B7",
+          "error": "#D32F2F",
+          "success": "#1B8A5A",
+          "border": "#E6E0EB"
+        }
+      },
+      {
+        "name": "lavender_panel",
+        "kind": "solid",
+        "bg": "#F4F0FA",
+        "on_bg": "#252032",
+        "on_bg_muted": "#5B5267",
+        "roles": {
+          "link": "#43216A",
+          "highlight": "#7044B7"
+        }
+      },
+      {
+        "name": "warm_orange_panel",
+        "kind": "solid",
+        "bg": "#FFF3E9",
+        "on_bg": "#252032",
+        "on_bg_muted": "#685B52",
+        "roles": {
+          "link": "#D65A0E",
+          "badge_text": "#B34700"
+        }
+      },
+      {
+        "name": "deep_purple_hero",
+        "kind": "solid",
+        "bg": "#43216A",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#E8DEF8",
+        "roles": {
+          "link": "#FFB787",
+          "accent_tag": "#EC772D",
+          "pill_bg": "#582C8B"
+        }
+      },
+      {
+        "name": "closing_cta_dark",
+        "kind": "solid",
+        "bg": "#210C38",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#D6C7E8",
+        "roles": {
+          "accent_button": "#EC772D",
+          "link": "#FFA76E"
+        }
+      },
+      {
+        "name": "glass_header",
+        "kind": "glass",
+        "contrast_against": "#FFFFFF",
+        "guarantee": "backdrop-blur-xl bg-[#FFF8F3]/85 border-b border-[#E6E0EB]",
+        "on_bg": "#252032",
+        "on_bg_muted": "#6B6375",
+        "roles": {
+          "link": "#43216A",
+          "active_link": "#EC772D"
+        }
+      }
+    ]
+  },
+  "entry_surfaces": {
+    "/": "editorial asymmetric hero — masked kinetic headline + live preview CTA & trust badges left, styled Indian family lifestyle frame + floating verified document & emergency badge right"
+  },
+  "component_structure": {
+    "header": {
+      "path": "frontend/src/components/layout/Header.tsx",
+      "description": "Sticky crystal glass navigation bar with Quircle geometric logo (square morphing into circle with orange spark), primary links (Vault, Health, Family Tree, Marketplace, Quick Help, Downloads), 'Notify Me' quick jump, and 'Open App Preview' primary CTA with micro-badge.",
+      "data_testids": [
+        "brand-logo-link",
+        "nav-link-vault",
+        "nav-link-health",
+        "nav-link-family",
+        "nav-link-marketplace",
+        "nav-link-quick-help",
+        "nav-link-downloads",
+        "nav-cta-notify-button",
+        "nav-cta-app-preview-button",
+        "mobile-menu-toggle-button"
+      ]
+    },
+    "hero_section": {
+      "path": "frontend/src/components/sections/HeroSection.tsx",
+      "description": "High-impact kinetic hero with animated badge 'The Super-App Built For Every Indian Family', stagger-revealed headline 'One Private Circle for Documents, Health & Everything Family Needs', rich subtitle, dual CTA (Notify Me modal trigger + Launch App Preview in new tab), interactive Indian state selector / trust chips (Aadhaar Ready, ABHA / Ayushman Bharat compliant, End-to-End Encrypted), and organic asymmetric framed family photo with dynamic floating cards (DigiLocker Synced, Vaccinations Due, SOS Help 24/7).",
+      "data_testids": [
+        "hero-headline",
+        "hero-subtitle",
+        "hero-cta-preview-btn",
+        "hero-cta-notify-btn",
+        "hero-family-photo-card",
+        "hero-floating-badge-health",
+        "hero-floating-badge-docs",
+        "hero-trust-badge-security"
+      ]
+    },
+    "benefit_ribbon": {
+      "path": "frontend/src/components/sections/BenefitRibbon.tsx",
+      "description": "Smooth editorial marquee with gentle momentum showcasing core pillars: 🛡️ DigiLocker & Aadhaar Ready | 🏥 ABHA-Compliant Health Vault | 🌳 Multi-Gen Family Tree & Milestones | 🛍️ Verified Local Marketplace & Live Bidding | ⚡ Quick Help & Hire Pro in 15 Mins | 🔒 Zero Data Sharing Without Explicit Consent.",
+      "data_testids": ["benefit-ribbon-container", "benefit-ribbon-item"]
+    },
+    "bento_features_grid": {
+      "path": "frontend/src/components/sections/BentoFeaturesGrid.tsx",
+      "description": "Tetris-style asymmetric 12-column Bento Grid for the 4 core pillars: (1) Smart Document Vault with Auto-Expiry & DigiLocker Sync (col-span-8), (2) ABHA Health Records & Prescription Timelines (col-span-4), (3) Interactive Family Tree & Memories Vault (col-span-4), (4) Hyperlocal Marketplace & Real-Time Live Bidding (col-span-8). Interactive tabs and live simulator widget inside cards.",
+      "data_testids": [
+        "bento-vault-card",
+        "bento-health-card",
+        "bento-family-card",
+        "bento-marketplace-card",
+        "bento-tab-selector"
+      ]
+    },
+    "family_sharing_steps": {
+      "path": "frontend/src/components/sections/FamilySharingSteps.tsx",
+      "description": "3-step interactive journey: 'How Quircle Unites 3 Generations' — Step 1: Create Your Private Quircle (Invite dadi, parents, siblings with role-based access); Step 2: Safe Vault Sharing (Selective document permissions — view only, time-bound, or emergency-contact access); Step 3: Instant Family Alerts & Updates (Emergency health alerts, shared groceries, family auctions).",
+      "data_testids": [
+        "family-step-1",
+        "family-step-2",
+        "family-step-3",
+        "family-steps-tab-group"
+      ]
+    },
+    "find_a_friend_section": {
+      "path": "frontend/src/components/sections/FindAFriendSection.tsx",
+      "description": "Exclusive planned feature spotlight: 'Find a Friend' with a prominent neon/purple 'PLANNED / ROADMAP Q4' glowing badge. Institution-matched safe connections (alumni circles, verified society neighbours, verified hobby groups for elders and kids) with interactive prototype preview.",
+      "data_testids": [
+        "find-friend-container",
+        "find-friend-badge-planned",
+        "find-friend-waitlist-btn",
+        "find-friend-pill-institution"
+      ]
+    },
+    "marketplace_and_live_bid": {
+      "path": "frontend/src/components/sections/MarketplaceSection.tsx",
+      "description": "Buyer & Seller Ecosystem showcasing transparent verified commerce: (A) Pre-loved family goods, electronics, books, baby gear; (B) Live Bidding engine with transparent countdown timer and fair-deal protection; (C) Escrow & UPI payment integration readiness.",
+      "data_testids": [
+        "marketplace-filter-tabs",
+        "marketplace-sample-bid-card",
+        "marketplace-seller-perks",
+        "marketplace-bid-simulator-btn"
+      ]
+    },
+    "more_features_and_quick_help": {
+      "path": "frontend/src/components/sections/MoreFeaturesSection.tsx",
+      "description": "Prominent showcase of 'Quick Help & Hire Pro' (verified electricians, plumbers, elder caregivers, tutor matching with 1-tap SOS trigger), Private Family Circles Chat with voice notes in Indian languages, and Emergency Medical Sharing QR.",
+      "data_testids": [
+        "quick-help-card",
+        "hire-pro-service-list",
+        "hire-pro-service-item",
+        "private-chat-card",
+        "emergency-qr-card"
+      ]
+    },
+    "information_use_table": {
+      "path": "frontend/src/components/sections/InfoUseTable.tsx",
+      "description": "Clear, honest, high-contrast privacy & information-use matrix contrasting 'What Quircle Does' vs 'What Quircle NEVER Does' (e.g. Zero ad-tracking, Military-grade AES-256 at rest, Indian DPDP Act 2023 compliance, You own your data).",
+      "data_testids": [
+        "info-table-container",
+        "info-table-row-documents",
+        "info-table-row-health",
+        "info-table-row-marketplace",
+        "info-table-row-telemetry"
+      ]
+    },
+    "brochure_catalogue_downloads": {
+      "path": "frontend/src/components/sections/DownloadsSection.tsx",
+      "description": "Real, downloadable, beautifully styled multi-page documents generated dynamically with PDF export / direct download: (1) Official Quircle 4-Page Executive Brochure (PDF), (2) Comprehensive 10-Page Product Catalogue & Security Whitepaper (PDF). Includes direct viewer modal + instant download buttons.",
+      "data_testids": [
+        "download-brochure-btn",
+        "download-catalogue-btn",
+        "preview-brochure-modal-btn",
+        "preview-catalogue-modal-btn"
+      ]
+    },
+    "notify_and_analytics_section": {
+      "path": "frontend/src/components/sections/NotifySection.tsx",
+      "description": "Interactive 'Get Early VIP Access & Updates' form (Name, Email, City in India, Family Size, Role: Parent/Elder/Young Adult) connected to the FastAPI `/api/notify` backend endpoint with real-time validation, instant confirmation toast, and live subscriber counter.",
+      "data_testids": [
+        "notify-form",
+        "notify-input-name",
+        "notify-input-email",
+        "notify-select-city",
+        "notify-select-family-size",
+        "notify-submit-button",
+        "notify-success-alert"
+      ]
+    },
+    "closing_cta": {
+      "path": "frontend/src/components/sections/ClosingCta.tsx",
+      "description": "Deep luxury purple background (#210C38) with kinetic glowing border and dual action buttons: 'Launch Live App Preview' and 'Download Overview Brochure'.",
+      "data_testids": [
+        "closing-cta-preview-button",
+        "closing-cta-brochure-button",
+        "closing-cta-container"
+      ]
+    },
+    "footer": {
+      "path": "frontend/src/components/layout/Footer.tsx",
+      "description": "Comprehensive footer with Quircle Indian emblem, language toggle (English / Hindi / Tamil / Telugu / Bengali / Marathi cues), 4-column link directory, DPDP Act compliance note, made in India with pride badge, and live server latency heartbeat.",
+      "data_testids": [
+        "footer-container",
+        "footer-brand-logo",
+        "footer-links-products",
+        "footer-links-company",
+        "footer-links-legal",
+        "footer-language-select"
+      ]
+    }
+  },
+  "image_urls": [
+    {
+      "category": "hero_family_lifestyle",
+      "url": "https://images.unsplash.com/photo-1567122087721-47b09b61e1d1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwyfHxpbmRpYW4lMjBmYW1pbHklMjBzbWlsaW5nfGVufDB8fHx8MTc5MDQxNjQ1MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Multi-generational Indian family smiling warmly together in traditional & modern clothing",
+      "usage": "Hero asymmetric floating card with purple drop-shadow and decorative organic shape"
+    },
+    {
+      "category": "secondary_family_moment",
+      "url": "https://images.unsplash.com/photo-1534235187448-833893dfe3e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzZ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYW1pbHklMjBzbWlsaW5nfGVufDB8fHx8MTc5MDQxNjQ1MHww&ixlib=rb-4.1.0&q=85",
+      "description": "Relaxed joyful Indian family sitting together outdoors in kurta",
+      "usage": "Family Tree & Memories pillar illustration card"
+    },
+    {
+      "category": "lifestyle_home_technology",
+      "url": "https://images.unsplash.com/photo-1581952976147-5a2d15560349?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwyfHxmYW1pbHklMjBob21lJTIwaGFwcHl8ZW58MHx8fHwxNzkwNDE2NDUxfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Family at home exploring digital apps together on tablet and smartphone",
+      "usage": "Quick Help & Services showcase section"
+    }
+  ],
+  "motion_and_interactions": {
+    "libraries": ["motion (bundled)"],
+    "hero_reveal": "Masked line-by-line reveal on load (initial y: 40, opacity: 0, duration: 0.8s, stagger: 0.15s, ease: [0.16, 1, 0.3, 1])",
+    "scroll_triggers": "Framer motion whileInView with once: true and viewport margin -80px",
+    "bento_hover": "Hover transform translateY(-4px) with subtle ambient glow in accent purple (#7044B7/15) and saffron (#EC772D/20)",
+    "tracing_beam": "Card borders with subtle shimmering radial-gradient highlight on interactive state",
+    "micro_interactions": "Active scale down to 0.98 on buttons, smooth pill indicator shifts on tabs, tooltip hints on compliance badges",
+    "accessibility": "Respects prefers-reduced-motion using useReducedMotion() hook; decorative elements tagged aria-hidden='true'"
+  },
+  "backend_integration": {
+    "fastapi_routes": [
+      {
+        "endpoint": "POST /api/notify",
+        "description": "Registers interest/waitlist entry with name, email, city, family_size, role, and timestamp; returns success message and updated waitlist stats.",
+        "pydantic_model": "NotifyRequest(name: str, email: EmailStr, city: str, family_size: int, role: str)",
+        "frontend_handler": "apiPost<NotifyResponse>('/notify', data)"
+      },
+      {
+        "endpoint": "GET /api/stats",
+        "description": "Returns live community metrics (families joined, documents secured, cities covered, verified pros count).",
+        "frontend_handler": "apiGet<CommunityStats>('/stats')"
+      },
+      {
+        "endpoint": "POST /api/analytics/event",
+        "description": "Logs lightweight interaction event (e.g. brochure_download, preview_click, section_view).",
+        "frontend_handler": "apiPost<AnalyticsResponse>('/analytics/event', payload)"
+      }
+    ],
+    "fallback_guarantee": "All sections must render full copy, mock stats, and interactive PDF previews even if backend is paused or unreachable."
+  },
+  "instructions_to_main_agent": [
+    "1. Replace default fonts in `frontend/src/index.css` with Plus Jakarta Sans (heading) and DM Sans (body) using @fontsource-variable imports.",
+    "2. Configure color tokens in `frontend/src/index.css` matching Quircle brand palette: #43216A (deep purple), #7044B7 (accent purple), #EC772D (saffron orange), #FFF8F3 (warm page bg), #FFF3E9 (warm orange card bg), #F4F0FA (pale lavender card bg), #252032 (charcoal ink body text).",
+    "3. Build all 12 distinct sections requested: Header with glassmorphism, Kinetic Hero with dual CTA & floating badges, Benefit Ribbon Marquee, 12-col Bento Grid (Vault, Health, Family, Marketplace), Family Sharing 3-Step Journey, Find A Friend (with prominent 'PLANNED' badge), Marketplace & Live Bidding Showcase, More Features (Quick Help & Hire Pro), Information-Use Table, Working PDF Brochure (4 pages) & Catalogue (10 pages) with direct download & preview modal, Notify Me waitlist form, Closing CTA, and Rich Indian-context Footer.",
+    "4. PDF Generation: Build genuine client-side downloadable PDF files for the 4-page Brochure and 10-page Catalogue (using jsPDF / HTML-canvas or structured styled print layouts/download handlers) with full high-resolution Quircle branding, feature matrices, and architecture specs so clicking 'Download Brochure (PDF)' and 'Download Catalogue (PDF)' triggers an authentic, complete PDF download.",
+    "5. Link the App Preview button directly to the Emergent preview or in-app interactive simulator so users can immediately test drive Quircle.",
+    "6. Ensure all inputs, buttons, and links include clear `data-testid` attributes.",
+    "7. Implement light analytics tracking (`/api/analytics/event`) on all download buttons and preview clicks.",
+    "8. Keep contrast strictly above 4.5:1 for all text. Never use dark purple text on dark backgrounds or white text without high contrast backgrounds."
+  ]
+}
