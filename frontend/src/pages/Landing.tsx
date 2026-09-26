@@ -14,6 +14,7 @@ import { MoreFeaturesSection } from "@/components/sections/MoreFeaturesSection";
 import { InfoUseTable } from "@/components/sections/InfoUseTable";
 import { DownloadsSection } from "@/components/sections/DownloadsSection";
 import { NotifySection } from "@/components/sections/NotifySection";
+import { GetAppSection } from "@/components/sections/GetAppSection";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { track } from "@/lib/analytics";
 
@@ -58,6 +59,7 @@ export default function Landing() {
         <InfoUseTable />
         <DownloadsSection />
         <NotifySection />
+        <GetAppSection />
         <ClosingCta />
       </main>
       <Footer />

@@ -62,6 +62,19 @@ export function Footer() {
                 </li>
                 <li>
                   <a
+                    href="#get-app"
+                    data-testid="footer-link-get-app"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToHash("#get-app");
+                    }}
+                    className="text-sm text-qp-ink/75 transition-colors hover:text-qp-orange"
+                  >
+                    Get the app
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="#notify"
                     data-testid="footer-link-notify"
                     onClick={(e) => {

@@ -40,6 +40,7 @@ Faithful copy from owner's Appendix A; planned-status honesty for Find a Friend;
 - PDF flip-through preview modals: every PDF page pre-rendered to /downloads/preview/{slug}-{n}.jpg (scripts via pymupdf); modal with arrows, dots, page indicator, in-modal download
 - User-supplied feature illustrations placed across the site: document-vault, health-records, photo-memories, live-bidding (bento), family-tree (sharing), find-friend (people), marketplace (commerce), quick-help, chat, news-room (services grid, News Room added as 4th card)
 - Deployment readiness (26 Sep 2026): deployment_agent health check PASS after two fixes — SITE_URL now from APP_URL env (emailer.py), app preview link moved to frontend/.env VITE_APP_PREVIEW_URL (import.meta.env)
+- Get the App section (#get-app, between notify and closing): phone mockup with real app home screenshot (/assets/app-home.jpg), Open app preview CTA, Copy app link (clipboard + toast), Send to mobile via wa.me prefilled WhatsApp message (no SMS gateway — visitor confirms send); footer link added; i18n keys getapp_h2a/h2b
 
 ## Backlog
 - P0: none blocking

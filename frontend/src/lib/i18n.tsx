@@ -44,6 +44,8 @@ const STRINGS = {
     closing_h2b: "Your people. Your Quircle.",
     closing_cta1: "Open app preview",
     closing_cta2: "Get the brochure",
+    getapp_h2a: "Quircle,",
+    getapp_h2b: "in your pocket.",
   },
   hi: {
     nav_features: "आप क्या कर सकते हैं",
@@ -86,6 +88,8 @@ const STRINGS = {
     closing_h2b: "आपके लोग. आपका Quircle.",
     closing_cta1: "ऐप प्रीव्यू खोलें",
     closing_cta2: "ब्रोशर पाएँ",
+    getapp_h2a: "Quircle,",
+    getapp_h2b: "अब आपकी जेब में.",
   },
 } as const;
 
